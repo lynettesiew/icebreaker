@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Icebreaker</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <a href="/" class="logo">🧊 Icebreaker</a>
+    {{#if logged_in}}
+      <a href="/logout" class="nav-link">Logout</a>
+    {{else}}
+      <a href="/login" class="nav-link">Login</a>
+    {{/if}}
+  </nav>
+
+  <main class="container">
+    {{{body}}}
+  </main>
+
+  <footer class="footer">
+    <p>Turn Strangers Into Connections</p>
+  </footer>
+</body>
+</html>

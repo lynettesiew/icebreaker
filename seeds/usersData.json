@@ -1,0 +1,27 @@
+[
+  {
+    "username": "Alex",
+    "email": "alex.museum@gmail.com",
+    "password": "password12345"
+  },
+  {
+    "username": "Priya",
+    "email": "priya.art@outlook.com",
+    "password": "password12345"
+  },
+  {
+    "username": "Marco",
+    "email": "marco.gallery@yahoo.com",
+    "password": "password12345"
+  },
+  {
+    "username": "Sofia",
+    "email": "sofia.curator@icloud.com",
+    "password": "password12345"
+  },
+  {
+    "username": "Ethan",
+    "email": "ethan.visitor@protonmail.com",
+    "password": "password12345"
+  }
+]
