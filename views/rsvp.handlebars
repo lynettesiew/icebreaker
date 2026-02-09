@@ -1,0 +1,48 @@
+<div class="rsvp-container">
+  <div class="rsvp-header">
+    <h1>RSVP to {{event.title}}</h1>
+    <div class="event-meta-small">
+      <span>📅 {{format_date event.date}} at {{format_time event.date}}</span>
+      <span>📍 {{event.location}}</span>
+    </div>
+  </div>
+
+  <div class="rsvp-content">
+    <div class="prompt-section">
+      <h2>Icebreaker Question</h2>
+      <p class="prompt-question">"{{event.prompt}}"</p>
+      <p class="prompt-explainer">
+        Your answer will be shared with other attendees to help spark conversations 
+        and make meaningful connections at the event.
+      </p>
+    </div>
+
+    <form class="rsvp-form" data-event-id="{{event.id}}">
+      <div class="form-group">
+        <label for="answer">Your Answer</label>
+        <textarea 
+          id="answer" 
+          name="answer" 
+          rows="5" 
+          placeholder="Share your response..."
+          required
+          maxlength="500"
+        ></textarea>
+        <span class="char-count">0/500 characters</span>
+      </div>
+
+      <div class="form-actions">
+        <a href="/event/{{event.id}}" class="btn btn-secondary">Back to Event</a>
+        <button type="submit" class="btn btn-primary btn-large">Submit RSVP</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="rsvp-info">
+    <p class="info-text">
+      ℹ️ After you submit, you'll see what other attendees answered!
+    </p>
+  </div>
+</div>
+
+<script src="/js/rsvp.js"></script>

@@ -1,16 +1,24 @@
+// Handle logout
 const logout = async () => {
-  // Make a POST request to destroy the session on the back end
-  const response = await fetch('/api/users/logout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-  });
+  try {
+    const response = await fetch('/api/users/logout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
 
-  if (response.ok) {
-    // If successfully logged out, redirect to the login page
-    document.location.replace('/login');
-  } else {
-    alert(response.statusText);
+    if (response.ok) {
+      document.location.replace('/login');
+    } else {
+      alert('Failed to log out. Please try again.');
+    }
+  } catch (err) {
+    console.error('Logout error:', err);
+    alert('An error occurred. Please try again.');
   }
 };
 
-document.querySelector('#logout').addEventListener('click', logout);
+// Attach event listener
+const logoutButton = document.querySelector('#logout');
+if (logoutButton) {
+  logoutButton.addEventListener('click', logout);
+}

@@ -1,0 +1,40 @@
+<div class="event-landing">
+  <div class="event-header">
+    <h1 class="event-title">{{event.title}}</h1>
+    <div class="event-meta">
+      <span class="event-date">📅 {{format_date event.date}} at {{format_time event.date}}</span>
+      <span class="event-location">📍 {{event.location}}</span>
+    </div>
+  </div>
+
+  <div class="event-content">
+    <div class="event-description">
+      <h2>About This Event</h2>
+      <p>{{event.description}}</p>
+    </div>
+
+    <div class="event-host">
+      <h3>Hosted by</h3>
+      <p class="host-name">{{event.host_name}}</p>
+    </div>
+
+    <div class="event-prompt-preview">
+      <h3>Icebreaker Question</h3>
+      <p class="prompt-text">"{{event.prompt}}"</p>
+      <p class="prompt-hint">You'll answer this when you RSVP to help break the ice!</p>
+    </div>
+  </div>
+
+  <div class="event-actions">
+    {{#if logged_in}}
+      <a href="/event/{{event.id}}/rsvp" class="btn btn-primary btn-large">RSVP Now</a>
+    {{else}}
+      <a href="/login?event={{event.id}}" class="btn btn-primary btn-large">RSVP to This Event</a>
+      <p class="login-hint">You'll need to sign in or create an account</p>
+    {{/if}}
+  </div>
+
+  <div class="event-stats">
+    <p>{{attendeeCount}} people are attending</p>
+  </div>
+</div>

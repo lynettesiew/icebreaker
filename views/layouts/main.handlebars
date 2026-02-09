@@ -3,14 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Icebreaker</title>
+  <title>{{#if pageTitle}}{{pageTitle}} | {{/if}}Icebreaker</title>
+  <meta name="description" content="Turn strangers into connections at networking events">
+  <link rel="stylesheet" href="/css/jass.css">
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
   <nav class="navbar">
     <a href="/" class="logo">🧊 Icebreaker</a>
     {{#if logged_in}}
-      <a href="/logout" class="nav-link">Logout</a>
+      <button id="logout" class="nav-link btn-link">Logout</button>
     {{else}}
       <a href="/login" class="nav-link">Login</a>
     {{/if}}
@@ -23,5 +25,15 @@
   <footer class="footer">
     <p>Turn Strangers Into Connections</p>
   </footer>
+
+  {{!-- Conditionally load scripts based on authentication --}}
+  {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+  {{/if}}
+  
+  {{!-- Page-specific scripts can be injected here --}}
+  {{#if pageScript}}
+    <script src="/js/{{pageScript}}"></script>
+  {{/if}}
 </body>
 </html>
