@@ -1,0 +1,88 @@
+<div class="dashboard-container">
+  <div class="dashboard-header">
+    <h1>My Dashboard</h1>
+    <p class="welcome-text">Welcome back, {{username}}!</p>
+  </div>
+
+  <div class="rsvps-section">
+    <h2>My Event RSVPs</h2>
+
+    {{#if rsvps.length}}
+      <div class="rsvps-grid">
+        {{#each rsvps}}
+          <div class="rsvp-card">
+            <div class="rsvp-card-header">
+              <h3 class="event-title">{{event_title}}</h3>
+            </div>
+
+            <div class="event-details">
+              <p class="event-meta">📅 {{format_date event_date}} at {{format_time event_date}}</p>
+              <p class="event-meta">📍 {{event_location}}</p>
+            </div>
+
+            <div class="rsvp-answer-preview">
+              <p class="prompt-label">Icebreaker Question:</p>
+              <p class="prompt-text">"{{event_prompt}}"</p>
+              <p class="answer-label">Your Answer:</p>
+              <p class="answer-text">{{answer}}</p>
+            </div>
+
+            <div class="rsvp-actions">
+              <a href="/event/{{event_id}}/success" class="btn btn-secondary btn-small">View Event</a>
+              <a href="/event/{{event_id}}/edit" class="btn btn-primary btn-small">Edit Answer</a>
+              <button
+                class="btn btn-danger btn-small cancel-rsvp-btn"
+                data-event-id="{{event_id}}"
+                data-event-title="{{event_title}}">
+                Cancel RSVP
+              </button>
+            </div>
+          </div>
+        {{/each}}
+      </div>
+    {{else}}
+      <div class="no-rsvps">
+        <div class="empty-state">
+          <div class="empty-icon">📅</div>
+          <h3>No RSVPs Yet</h3>
+          <p>You haven't RSVP'd to any events yet.</p>
+          <a href="/" class="btn btn-primary">Browse Events</a>
+        </div>
+      </div>
+    {{/if}}
+  </div>
+</div>
+
+<script src="/js/dashboard.js"></script>
+
+<style>
+.dashboard-container { max-width: 1200px; margin: 0 auto; }
+.dashboard-header { margin-bottom: 3rem; text-align: center; }
+.dashboard-header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; color: var(--text-primary); }
+.welcome-text { color: var(--text-secondary); font-size: 1.125rem; }
+.rsvps-section h2 { margin-bottom: 2rem; color: var(--text-primary); }
+.rsvps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 1.5rem; }
+.rsvp-card { background-color: var(--card-background); border-radius: 1rem; padding: 1.5rem; box-shadow: var(--shadow-lg); }
+.rsvp-card-header { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 2px solid var(--border-color); }
+.rsvp-card-header h3 { font-size: 1.5rem; color: var(--primary-color); margin: 0; }
+.event-details { margin-bottom: 1rem; }
+.event-meta { color: var(--text-secondary); font-size: 0.875rem; margin-bottom: 0.25rem; }
+.rsvp-answer-preview { background-color: var(--background); padding: 1rem; border-radius: 0.5rem; margin-bottom: 1rem; }
+.prompt-label, .answer-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-secondary); margin-bottom: 0.25rem; font-weight: 600; }
+.prompt-text { font-style: italic; color: var(--primary-color); margin-bottom: 0.75rem; font-weight: 500; }
+.answer-text { color: var(--text-primary); line-height: 1.5; margin-bottom: 0; }
+.rsvp-actions { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.btn-small { padding: 0.5rem 1rem; font-size: 0.875rem; }
+.btn-danger { background-color: var(--danger-color); color: white; }
+.btn-danger:hover { background-color: #DC2626; }
+.no-rsvps { background-color: var(--card-background); border-radius: 1rem; padding: 3rem; box-shadow: var(--shadow); }
+.empty-state { text-align: center; max-width: 400px; margin: 0 auto; }
+.empty-icon { font-size: 4rem; margin-bottom: 1rem; }
+.empty-state h3 { font-size: 1.5rem; margin-bottom: 1rem; color: var(--text-primary); }
+.empty-state p { color: var(--text-secondary); margin-bottom: 1.5rem; }
+@media (max-width: 768px) {
+  .rsvps-grid { grid-template-columns: 1fr; }
+  .rsvp-actions { flex-direction: column; }
+  .rsvp-actions .btn-small { width: 100%; }
+}
+</style>

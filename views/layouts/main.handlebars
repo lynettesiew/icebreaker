@@ -11,11 +11,14 @@
 <body>
   <nav class="navbar">
     <a href="/" class="logo">🧊 Icebreaker</a>
-    {{#if logged_in}}
-      <button id="logout" class="nav-link btn-link">Logout</button>
-    {{else}}
-      <a href="/login" class="nav-link">Login</a>
-    {{/if}}
+    <div class="nav-links">
+      {{#if logged_in}}
+        <a href="/dashboard" class="nav-link">My Dashboard</a>
+        <button id="logout" class="nav-link btn-link">Logout</button>
+      {{else}}
+        <a href="/login" class="nav-link">Login</a>
+      {{/if}}
+    </div>
   </nav>
 
   <main class="container">

@@ -17,7 +17,10 @@
   </div>
 
   <div class="your-answer-section">
-    <h2>Your Answer</h2>
+    <div class="section-header">
+      <h2>Your Answer</h2>
+      <a href="/event/{{event.id}}/edit" class="btn btn-outline btn-small">Edit Answer</a>
+    </div>
     <div class="answer-card your-answer">
       <p class="answer-prompt">"{{event.prompt}}"</p>
       <p class="answer-text">{{userAnswer}}</p>
@@ -50,6 +53,32 @@
   </div>
 
   <div class="success-actions">
-    <a href="/" class="btn btn-primary">Back to Home</a>
+    <a href="/" class="btn btn-secondary">Back to Home</a>
+    <a href="/dashboard" class="btn btn-primary">View My Dashboard</a>
   </div>
 </div>
+
+<style>
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.section-header h2 {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .section-header .btn-small {
+    width: 100%;
+  }
+}
+</style>

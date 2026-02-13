@@ -1,0 +1,47 @@
+<div class="rsvp-container">
+  <div class="rsvp-header">
+    <h1>Edit Your RSVP</h1>
+    <h2>{{event.title}}</h2>
+    <div class="event-meta-small">
+      <span>📅 {{format_date event.date}} at {{format_time event.date}}</span>
+      <span>📍 {{event.location}}</span>
+    </div>
+  </div>
+
+  <div class="rsvp-content">
+    <div class="prompt-section">
+      <h2>Icebreaker Question</h2>
+      <p class="prompt-question">"{{event.prompt}}"</p>
+      <p class="prompt-explainer">
+        Update your answer below. Your new response will be shared with other attendees.
+      </p>
+    </div>
+
+    <form class="edit-rsvp-form" data-event-id="{{event.id}}">
+      <div class="form-group">
+        <label for="answer">Your Answer</label>
+        <textarea 
+          id="answer" 
+          name="answer" 
+          rows="5" 
+          required
+          maxlength="500"
+        >{{currentAnswer}}</textarea>
+        <span class="char-count">{{currentAnswer.length}}/500 characters</span>
+      </div>
+
+      <div class="form-actions">
+        <a href="/dashboard" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-primary btn-large">Update RSVP</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="rsvp-info">
+    <p class="info-text">
+      💡 Your updated answer will be visible to all event attendees
+    </p>
+  </div>
+</div>
+
+<script src="/js/edit-rsvp.js"></script>
